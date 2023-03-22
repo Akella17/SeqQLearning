@@ -89,7 +89,7 @@ if __name__ == "__main__":
     if config['policy']:
         write_filename = "TD3_KBM"
     else:
-        write_filename = "CEM(PolicyFreeTD3)_KBM"
+        write_filename = "CEM(PolicyFreeTD3_OldNextActions)"
     wandb.login()
     wandb.init(project="SeqQLearning", name = write_filename, config = vars(args))#, mode = 'disabled')
 
