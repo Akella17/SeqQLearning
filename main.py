@@ -6,6 +6,7 @@ import argparse
 import numpy as np
 import utils
 import TD3
+from config import config
 from dynamics_model import GoalBasedKBM
 
 
@@ -85,7 +86,10 @@ if __name__ == "__main__":
     replay_buffer = utils.ReplayBuffer(state_dim, action_dim)
     
     # Evaluate untrained policy
-    write_filename = "TD3_KBM"
+    if config['policy']:
+        write_filename = "TD3_KBM"
+    else:
+        write_filename = "CEM(PolicyFreeTD3)_KBM"
     wandb.login()
     wandb.init(project="SeqQLearning", name = write_filename, config = vars(args))#, mode = 'disabled')
 
